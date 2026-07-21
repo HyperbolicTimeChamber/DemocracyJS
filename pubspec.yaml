@@ -1,0 +1,45 @@
+name: local_poll
+description: Offline-first local-network polling system
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shelf: ^1.4.2
+  shelf_router: ^1.1.4
+  shelf_web_socket: ^2.0.1
+  web_socket_channel: ^3.0.1
+  network_info_plus: ^6.1.1
+  qr_flutter: ^4.1.0
+  bonsoir: ^5.1.4
+  uuid: ^4.5.1
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+  hive_generator: ^2.0.1
+  riverpod_generator: ^2.6.3
+  mocktail: ^1.0.4
+
+dependency_overrides:
+  analyzer: ^7.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/browser_client/
