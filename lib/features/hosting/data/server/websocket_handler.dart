@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:shelf/shelf.dart' show Handler;
 import 'package:shelf_web_socket/shelf_web_socket.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:local_poll/core/enums/event_type.dart';
 import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
 
 class WebSocketHandler {

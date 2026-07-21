@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,7 +8,10 @@ import 'package:local_poll/core/enums/server_status.dart';
 import 'package:local_poll/core/theme/app_colors.dart';
 import 'package:local_poll/core/theme/app_dimensions.dart';
 import 'package:local_poll/core/theme/app_text_styles.dart';
+import 'package:local_poll/core/constants/app_constants.dart';
+import 'package:local_poll/core/enums/event_type.dart';
 import 'package:local_poll/features/hosting/presentation/providers/hosting_providers.dart';
+import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
 import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
 import 'package:local_poll/features/poll/presentation/screens/poll_results_screen.dart';
 import 'package:local_poll/shared/widgets/connection_indicator.dart';
@@ -36,28 +40,62 @@ class _HostingScreenState extends ConsumerState<HostingScreen> {
     ref.read(serverStatusProvider.notifier).update(ServerStatus.starting);
     ref.read(currentPollProvider.notifier).updateStatus(PollStatus.hosting);
 
+    // Save poll to repository
+    final poll = ref.read(currentPollProvider);
+    if (poll != null) {
+      await ref.read(pollRepositoryProvider).createPoll(poll);
+    }
+
     try {
       final server = ref.read(localServerProvider);
       await server.start(port: port);
       ref.read(serverStatusProvider.notifier).update(ServerStatus.running);
+
+      // Register mDNS
+      try {
+        await ref.read(mdnsServiceProvider).register(
+          name: AppConstants.mDnsServiceName,
+          port: port,
+        );
+      } catch (_) {
+        // mDNS registration is best-effort
+      }
     } catch (e) {
       ref.read(serverStatusProvider.notifier).update(ServerStatus.failed);
     }
   }
 
   Future<void> _stopServer() async {
+    // Broadcast poll ended
     try {
       final server = ref.read(localServerProvider);
+      server.broadcastEvent(const WebSocketEvent(
+        type: EventType.pollEnded,
+        data: {},
+      ));
       await server.stop();
     } catch (_) {}
+
+    // Unregister mDNS
+    try {
+      await ref.read(mdnsServiceProvider).unregister();
+    } catch (_) {}
+
     ref.read(serverStatusProvider.notifier).update(ServerStatus.stopped);
     ref.read(currentPollProvider.notifier).updateStatus(PollStatus.completed);
+
+    // Save final poll state
+    final poll = ref.read(currentPollProvider);
+    if (poll != null) {
+      await ref.read(pollRepositoryProvider).updatePoll(poll);
+    }
+
     ref.read(connectedClientsProvider.notifier).reset();
 
     if (mounted) {
-      Navigator.of(context).pushReplacement(
+      unawaited(Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => const PollResultsScreen()),
-      );
+      ));
     }
   }
 
@@ -147,7 +185,7 @@ class _HostingScreenState extends ConsumerState<HostingScreen> {
               ),
             ),
             const SizedBox(height: AppDimensions.paddingLG),
-            Text('Live Results', style: AppTextStyles.h3),
+            const Text('Live Results', style: AppTextStyles.h3),
             const SizedBox(height: AppDimensions.paddingSM),
             ...poll.options.map((option) {
               final totalVotes = poll.options.fold<int>(0, (sum, o) => sum + o.voteCount);
