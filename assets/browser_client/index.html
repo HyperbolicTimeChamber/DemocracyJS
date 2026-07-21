@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Local Poll</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="loading" class="screen active">
+      <div class="spinner"></div>
+      <p>Connecting to poll...</p>
+    </div>
+
+    <div id="voting" class="screen">
+      <h1 id="question"></h1>
+      <div id="options"></div>
+      <button id="submit-btn" class="btn-primary" disabled>Submit Vote</button>
+    </div>
+
+    <div id="submitted" class="screen">
+      <div class="check-icon">&#10003;</div>
+      <h2>Vote Recorded!</h2>
+      <div id="results-after-vote"></div>
+    </div>
+
+    <div id="waiting" class="screen">
+      <div class="check-icon">&#10003;</div>
+      <h2>Vote Recorded!</h2>
+      <p>Results will be revealed by the host.</p>
+    </div>
+
+    <div id="results" class="screen">
+      <h2>Results</h2>
+      <div id="results-container"></div>
+      <p id="total-votes"></p>
+    </div>
+
+    <div id="ended" class="screen">
+      <h2>Poll Ended</h2>
+      <div id="final-results"></div>
+      <p id="final-total"></p>
+    </div>
+
+    <div id="error" class="screen">
+      <div class="error-icon">!</div>
+      <h2>Connection Error</h2>
+      <p id="error-message">Could not connect to poll.</p>
+      <button class="btn-secondary" onclick="location.reload()">Retry</button>
+    </div>
+  </div>
+
+  <div id="connection-status">
+    <span id="status-dot"></span>
+    <span id="status-text">Connecting</span>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
