@@ -48,7 +48,8 @@ void main() {
       final json = model.toJson();
       expect(json['id'], 'p1');
       expect(json['options'], isList);
-      expect((json['options'] as List).first['text'], 'A');
+      final firstOption = (json['options'] as List).first;
+      expect(firstOption is Map ? firstOption['text'] : (firstOption as PollOptionModel).text, 'A');
     });
 
     test('round-trips entity → model → entity', () {
