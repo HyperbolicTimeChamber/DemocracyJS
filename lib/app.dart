@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'core/theme/app_theme.dart';
+import 'package:local_poll/core/theme/app_theme.dart';
+import 'package:local_poll/features/poll/presentation/screens/home_screen.dart';
 
 class LocalPollApp extends StatelessWidget {
   const LocalPollApp({super.key});
@@ -10,9 +11,7 @@ class LocalPollApp extends StatelessWidget {
       title: 'Local Poll',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
-      home: const Scaffold(
-        body: Center(child: Text('Local Poll')),
-      ),
+      home: const HomeScreen(),
     );
   }
 }
