@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_poll/core/constants/app_constants.dart';
 import 'package:local_poll/core/enums/event_type.dart';
+import 'package:local_poll/core/enums/poll_status.dart';
 import 'package:local_poll/core/enums/server_status.dart';
 import 'package:local_poll/features/hosting/data/server/local_server_impl.dart';
 import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
@@ -10,15 +11,13 @@ import 'package:local_poll/features/voting/domain/usecases/process_vote.dart';
 import 'package:local_poll/shared/services/mdns_service.dart';
 import 'package:local_poll/shared/services/network_service.dart';
 
-// Holds a reference to the created server so callbacks can broadcast without
-// reading localServerProvider recursively (which would create a circularity).
-ShelfLocalServer? _serverInstance;
-
 final localServerProvider = Provider<ShelfLocalServer>((ref) {
-  if (_serverInstance != null) return _serverInstance!;
-
   final processVote = ProcessVote();
   final submitVoteUseCase = SubmitVote();
+
+  // Local reference used by callbacks to broadcast without re-reading the
+  // provider recursively. Nulled on dispose to prevent stale references.
+  ShelfLocalServer? serverRef;
 
   final server = ShelfLocalServer(
     getPoll: () => ref.read(currentPollProvider)!,
@@ -26,6 +25,9 @@ final localServerProvider = Provider<ShelfLocalServer>((ref) {
       final repo = ref.read(pollRepositoryProvider);
       final poll = ref.read(currentPollProvider);
       if (poll == null) return false;
+
+      // Block votes when the poll is not actively hosting (e.g. paused).
+      if (poll.status != PollStatus.hosting) return false;
 
       final alreadyVoted = await repo.hasVoted(poll.id, ip);
       if (alreadyVoted) return false;
@@ -41,8 +43,8 @@ final localServerProvider = Provider<ShelfLocalServer>((ref) {
       await repo.updatePoll(updatedPoll);
       ref.read(currentPollProvider.notifier).updatePoll(updatedPoll);
 
-      // Broadcast results update via captured server reference
-      _serverInstance?.broadcastEvent(WebSocketEvent(
+      // Broadcast results update via captured server reference.
+      serverRef?.broadcastEvent(WebSocketEvent(
         type: EventType.resultsUpdated,
         data: {
           'options': updatedPoll.options
@@ -51,7 +53,7 @@ final localServerProvider = Provider<ShelfLocalServer>((ref) {
           'totalVotes': updatedPoll.options.fold<int>(0, (sum, o) => sum + o.voteCount),
         },
       ));
-      _serverInstance?.broadcastEvent(WebSocketEvent(
+      serverRef?.broadcastEvent(WebSocketEvent(
         type: EventType.voteSubmitted,
         data: {
           'totalVotes': updatedPoll.options.fold<int>(0, (sum, o) => sum + o.voteCount),
@@ -65,10 +67,10 @@ final localServerProvider = Provider<ShelfLocalServer>((ref) {
     },
   );
 
-  _serverInstance = server;
+  serverRef = server;
 
   ref.onDispose(() {
-    _serverInstance = null;
+    serverRef = null;
   });
 
   return server;
