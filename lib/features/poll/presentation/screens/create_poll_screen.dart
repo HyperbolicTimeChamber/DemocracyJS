@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/core/constants/app_constants.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/core/theme/app_colors.dart';
-import 'package:local_poll/core/theme/app_dimensions.dart';
-import 'package:local_poll/core/theme/app_text_styles.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
-import 'package:local_poll/features/poll/presentation/widgets/option_input_field.dart';
-import 'package:local_poll/features/hosting/presentation/screens/hosting_screen.dart';
-import 'package:local_poll/shared/widgets/option_tile.dart';
-import 'package:local_poll/shared/widgets/primary_button.dart';
+import 'package:democracy_js/core/constants/app_constants.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/core/theme/app_colors.dart';
+import 'package:democracy_js/core/theme/app_dimensions.dart';
+import 'package:democracy_js/core/theme/app_text_styles.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/features/poll/presentation/widgets/option_input_field.dart';
+import 'package:democracy_js/features/hosting/presentation/screens/hosting_screen.dart';
+import 'package:democracy_js/shared/widgets/option_tile.dart';
+import 'package:democracy_js/shared/widgets/primary_button.dart';
 
 class CreatePollScreen extends ConsumerStatefulWidget {
   const CreatePollScreen({super.key});

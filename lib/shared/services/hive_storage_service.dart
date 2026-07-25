@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:local_poll/core/constants/app_constants.dart';
+import 'package:democracy_js/core/constants/app_constants.dart';
 
 class HiveStorageService {
   late Box _pollsBox;

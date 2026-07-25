@@ -1,5 +1,5 @@
-import 'package:local_poll/core/enums/server_status.dart';
-import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
+import 'package:democracy_js/core/enums/server_status.dart';
+import 'package:democracy_js/features/poll/domain/entities/web_socket_event.dart';
 
 abstract class LocalServer {
   Future<void> start({required int port});

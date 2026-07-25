@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
 import 'poll_option_model.dart';
 
 part 'poll_model.freezed.dart';

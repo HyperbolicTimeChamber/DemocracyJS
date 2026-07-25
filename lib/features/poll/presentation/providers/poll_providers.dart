@@ -1,14 +1,14 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/features/poll/data/repositories/poll_repository_impl.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/repositories/poll_repository.dart';
-import 'package:local_poll/features/poll/domain/usecases/create_poll.dart';
-import 'package:local_poll/features/poll/domain/usecases/add_option.dart';
-import 'package:local_poll/features/poll/domain/usecases/remove_option.dart';
-import 'package:local_poll/shared/services/hive_storage_service.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/features/poll/data/repositories/poll_repository_impl.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/repositories/poll_repository.dart';
+import 'package:democracy_js/features/poll/domain/usecases/create_poll.dart';
+import 'package:democracy_js/features/poll/domain/usecases/add_option.dart';
+import 'package:democracy_js/features/poll/domain/usecases/remove_option.dart';
+import 'package:democracy_js/shared/services/hive_storage_service.dart';
 
 final hiveStorageServiceProvider = Provider<HiveStorageService>((ref) {
   throw UnimplementedError('Must be overridden in ProviderScope');

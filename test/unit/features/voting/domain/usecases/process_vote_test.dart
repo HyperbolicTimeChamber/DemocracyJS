@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/poll_option.dart';
-import 'package:local_poll/features/poll/domain/entities/vote.dart';
-import 'package:local_poll/features/voting/domain/usecases/process_vote.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll_option.dart';
+import 'package:democracy_js/features/poll/domain/entities/vote.dart';
+import 'package:democracy_js/features/voting/domain/usecases/process_vote.dart';
 
 void main() {
   late ProcessVote processVote;

@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/core/constants/app_constants.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/core/errors/app_exceptions.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/poll_option.dart';
-import 'package:local_poll/features/poll/domain/usecases/add_option.dart';
+import 'package:democracy_js/core/constants/app_constants.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/core/errors/app_exceptions.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll_option.dart';
+import 'package:democracy_js/features/poll/domain/usecases/add_option.dart';
 
 void main() {
   late AddOption addOption;

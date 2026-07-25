@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
-import 'package:local_poll/features/poll/presentation/screens/home_screen.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/repositories/poll_repository.dart';
-import 'package:local_poll/features/poll/domain/entities/vote.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/features/poll/presentation/screens/home_screen.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/repositories/poll_repository.dart';
+import 'package:democracy_js/features/poll/domain/entities/vote.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
 
 void main() {
   Widget wrap(Widget child, {List<Override> overrides = const []}) {

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:local_poll/features/poll/domain/entities/poll_option.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll_option.dart';
 
 part 'poll_option_model.freezed.dart';
 part 'poll_option_model.g.dart';

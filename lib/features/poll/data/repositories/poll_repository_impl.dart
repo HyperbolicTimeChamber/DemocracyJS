@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:hive/hive.dart';
-import 'package:local_poll/features/poll/data/models/poll_model.dart';
-import 'package:local_poll/features/poll/data/models/vote_model.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/vote.dart';
-import 'package:local_poll/features/poll/domain/repositories/poll_repository.dart';
+import 'package:democracy_js/features/poll/data/models/poll_model.dart';
+import 'package:democracy_js/features/poll/data/models/vote_model.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/vote.dart';
+import 'package:democracy_js/features/poll/domain/repositories/poll_repository.dart';
 
 class PollRepositoryImpl implements PollRepository {
   PollRepositoryImpl({required this.pollsBox, required this.votesBox});

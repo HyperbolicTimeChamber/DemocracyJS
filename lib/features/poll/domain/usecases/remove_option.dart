@@ -1,5 +1,5 @@
-import 'package:local_poll/core/errors/app_exceptions.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/core/errors/app_exceptions.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
 
 class RemoveOption {
   Poll call({required Poll poll, required String optionId}) {

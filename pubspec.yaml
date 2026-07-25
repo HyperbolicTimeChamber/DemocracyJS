@@ -1,4 +1,4 @@
-name: local_poll
+name: democracy_js
 description: Offline-first local-network polling system
 publish_to: 'none'
 version: 1.0.0+1

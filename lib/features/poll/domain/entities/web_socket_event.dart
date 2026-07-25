@@ -1,4 +1,4 @@
-import 'package:local_poll/core/enums/event_type.dart';
+import 'package:democracy_js/core/enums/event_type.dart';
 
 class WebSocketEvent {
   const WebSocketEvent({required this.type, required this.data});

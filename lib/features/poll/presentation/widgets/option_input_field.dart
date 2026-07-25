@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:local_poll/core/theme/app_colors.dart';
-import 'package:local_poll/core/theme/app_dimensions.dart';
+import 'package:democracy_js/core/theme/app_colors.dart';
+import 'package:democracy_js/core/theme/app_dimensions.dart';
 
 class OptionInputField extends StatefulWidget {
   const OptionInputField({super.key, required this.onAdd});

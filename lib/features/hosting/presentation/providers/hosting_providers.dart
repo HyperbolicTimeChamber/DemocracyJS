@@ -1,15 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/core/constants/app_constants.dart';
-import 'package:local_poll/core/enums/event_type.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/server_status.dart';
-import 'package:local_poll/features/hosting/data/server/local_server_impl.dart';
-import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
-import 'package:local_poll/features/poll/domain/usecases/submit_vote.dart';
-import 'package:local_poll/features/voting/domain/usecases/process_vote.dart';
-import 'package:local_poll/shared/services/mdns_service.dart';
-import 'package:local_poll/shared/services/network_service.dart';
+import 'package:democracy_js/core/constants/app_constants.dart';
+import 'package:democracy_js/core/enums/event_type.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/server_status.dart';
+import 'package:democracy_js/features/hosting/data/server/local_server_impl.dart';
+import 'package:democracy_js/features/poll/domain/entities/web_socket_event.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/features/poll/domain/usecases/submit_vote.dart';
+import 'package:democracy_js/features/voting/domain/usecases/process_vote.dart';
+import 'package:democracy_js/shared/services/mdns_service.dart';
+import 'package:democracy_js/shared/services/network_service.dart';
 
 final localServerProvider = Provider<ShelfLocalServer>((ref) {
   final processVote = ProcessVote();

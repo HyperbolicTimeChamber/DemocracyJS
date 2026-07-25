@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:shelf/shelf.dart' as shelf;
 import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:shelf_router/shelf_router.dart';
-import 'package:local_poll/core/enums/event_type.dart';
-import 'package:local_poll/core/enums/server_status.dart';
-import 'package:local_poll/features/hosting/data/server/api_handler.dart';
-import 'package:local_poll/features/hosting/data/server/websocket_handler.dart';
-import 'package:local_poll/features/hosting/domain/services/local_server.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
+import 'package:democracy_js/core/enums/event_type.dart';
+import 'package:democracy_js/core/enums/server_status.dart';
+import 'package:democracy_js/features/hosting/data/server/api_handler.dart';
+import 'package:democracy_js/features/hosting/data/server/websocket_handler.dart';
+import 'package:democracy_js/features/hosting/domain/services/local_server.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/web_socket_event.dart';
 
 class ShelfLocalServer implements LocalServer {
   ShelfLocalServer({

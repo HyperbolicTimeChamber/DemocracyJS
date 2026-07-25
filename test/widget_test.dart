@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/app.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/vote.dart';
-import 'package:local_poll/features/poll/domain/repositories/poll_repository.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/app.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/vote.dart';
+import 'package:democracy_js/features/poll/domain/repositories/poll_repository.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
 
 void main() {
-  testWidgets('App smoke test - renders Local Poll text',
+  testWidgets('App smoke test - renders DemocracyJS text',
       (WidgetTester tester) async {
     await tester.pumpWidget(
       ProviderScope(
@@ -19,11 +19,11 @@ void main() {
             return notifier;
           }),
         ],
-        child: const LocalPollApp(),
+        child: const DemocracyJSApp(),
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.text('Local Poll'), findsOneWidget);
+    expect(find.text('DemocracyJS'), findsOneWidget);
   });
 }
 

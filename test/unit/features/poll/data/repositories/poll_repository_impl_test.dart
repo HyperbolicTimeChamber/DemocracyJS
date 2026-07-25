@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
-import 'package:local_poll/core/constants/app_constants.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/features/poll/data/repositories/poll_repository_impl.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/poll_option.dart';
-import 'package:local_poll/features/poll/domain/entities/vote.dart';
+import 'package:democracy_js/core/constants/app_constants.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/features/poll/data/repositories/poll_repository_impl.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll_option.dart';
+import 'package:democracy_js/features/poll/domain/entities/vote.dart';
 import 'dart:io';
 
 void main() {

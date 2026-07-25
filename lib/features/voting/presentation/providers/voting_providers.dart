@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/web_socket_event.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/web_socket_event.dart';
 
 final webSocketEventsProvider = StreamProvider<WebSocketEvent>((ref) {
   // Will be overridden when server starts

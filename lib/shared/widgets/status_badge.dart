@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/core/theme/app_colors.dart';
-import 'package:local_poll/core/theme/app_dimensions.dart';
-import 'package:local_poll/core/theme/app_text_styles.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/core/theme/app_colors.dart';
+import 'package:democracy_js/core/theme/app_dimensions.dart';
+import 'package:democracy_js/core/theme/app_text_styles.dart';
 
 class StatusBadge extends StatelessWidget {
   const StatusBadge({super.key, required this.status});

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
 
 void main() {
   group('ResultsVisibility', () {

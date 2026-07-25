@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
-import 'package:local_poll/core/enums/results_visibility.dart';
-import 'package:local_poll/core/enums/vote_mode.dart';
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/core/enums/results_visibility.dart';
+import 'package:democracy_js/core/enums/vote_mode.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
 
 class ApiHandler {
   ApiHandler({

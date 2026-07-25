@@ -1,4 +1,4 @@
-# Local Poll - Project Guide
+# DemocracyJS - Project Guide
 
 ## Overview
 Offline-first local-network polling app. Host phone runs shelf HTTP/WebSocket server, participants vote via browser.

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
-import 'package:local_poll/shared/services/hive_storage_service.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/shared/services/hive_storage_service.dart';
 import 'app.dart';
 
 void main() async {
@@ -15,7 +15,7 @@ void main() async {
       overrides: [
         hiveStorageServiceProvider.overrideWithValue(storageService),
       ],
-      child: const LocalPollApp(),
+      child: const DemocracyJSApp(),
     ),
   );
 }

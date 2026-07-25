@@ -1,6 +1,6 @@
-import 'package:local_poll/features/poll/domain/entities/poll.dart';
-import 'package:local_poll/features/poll/domain/entities/poll_option.dart';
-import 'package:local_poll/features/poll/domain/entities/vote.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll.dart';
+import 'package:democracy_js/features/poll/domain/entities/poll_option.dart';
+import 'package:democracy_js/features/poll/domain/entities/vote.dart';
 
 class ProcessVote {
   Poll call({required Poll poll, required Vote vote}) {

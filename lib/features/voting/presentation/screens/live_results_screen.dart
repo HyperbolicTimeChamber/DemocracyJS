@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/core/theme/app_dimensions.dart';
-import 'package:local_poll/core/theme/app_text_styles.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
-import 'package:local_poll/shared/widgets/result_bar.dart';
+import 'package:democracy_js/core/theme/app_dimensions.dart';
+import 'package:democracy_js/core/theme/app_text_styles.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/shared/widgets/result_bar.dart';
 
 class LiveResultsScreen extends ConsumerWidget {
   const LiveResultsScreen({super.key});

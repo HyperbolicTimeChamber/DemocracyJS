@@ -1,4 +1,4 @@
-package com.localpoll.local_poll
+package com.democracyjs.app
 
 import io.flutter.embedding.android.FlutterActivity
 

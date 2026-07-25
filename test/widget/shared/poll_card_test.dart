@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/core/enums/poll_status.dart';
-import 'package:local_poll/shared/widgets/poll_card.dart';
+import 'package:democracy_js/core/enums/poll_status.dart';
+import 'package:democracy_js/shared/widgets/poll_card.dart';
 
 void main() {
   Widget wrap(Widget child) => MaterialApp(home: Scaffold(body: child));

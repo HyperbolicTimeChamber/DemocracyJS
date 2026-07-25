@@ -1,5 +1,5 @@
 import 'package:bonsoir/bonsoir.dart';
-import 'package:local_poll/core/constants/app_constants.dart';
+import 'package:democracy_js/core/constants/app_constants.dart';
 
 class MdnsService {
   BonsoirBroadcast? _broadcast;

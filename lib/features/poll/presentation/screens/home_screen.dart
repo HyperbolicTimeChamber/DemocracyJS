@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:local_poll/core/theme/app_colors.dart';
-import 'package:local_poll/core/theme/app_dimensions.dart';
-import 'package:local_poll/features/poll/presentation/providers/poll_providers.dart';
-import 'package:local_poll/features/poll/presentation/screens/create_poll_screen.dart';
-import 'package:local_poll/shared/widgets/empty_state.dart';
-import 'package:local_poll/shared/widgets/error_view.dart';
-import 'package:local_poll/shared/widgets/loading_view.dart';
-import 'package:local_poll/shared/widgets/poll_card.dart';
+import 'package:democracy_js/core/theme/app_colors.dart';
+import 'package:democracy_js/core/theme/app_dimensions.dart';
+import 'package:democracy_js/features/poll/presentation/providers/poll_providers.dart';
+import 'package:democracy_js/features/poll/presentation/screens/create_poll_screen.dart';
+import 'package:democracy_js/shared/widgets/empty_state.dart';
+import 'package:democracy_js/shared/widgets/error_view.dart';
+import 'package:democracy_js/shared/widgets/loading_view.dart';
+import 'package:democracy_js/shared/widgets/poll_card.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -17,7 +17,7 @@ class HomeScreen extends ConsumerWidget {
     final pollsAsync = ref.watch(pollListProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Local Poll')),
+      appBar: AppBar(title: const Text('DemocracyJS')),
       body: pollsAsync.when(
         loading: () => const LoadingView(),
         error: (err, _) => ErrorView(

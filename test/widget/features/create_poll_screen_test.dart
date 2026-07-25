@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:local_poll/features/poll/presentation/screens/create_poll_screen.dart';
+import 'package:democracy_js/features/poll/presentation/screens/create_poll_screen.dart';
 
 void main() {
   Widget wrap(Widget child) {
