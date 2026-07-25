@@ -1,5 +1,5 @@
 abstract class AppConstants {
-  static const int defaultServerPort = 5000;
+  static const int defaultServerPort = 8080;
   static const int optionSoftLimit = 10;
   static const int optionHardLimit = 20;
   static const int minOptions = 2;

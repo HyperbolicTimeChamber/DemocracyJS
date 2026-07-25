@@ -35,20 +35,30 @@ class _HostingScreenState extends ConsumerState<HostingScreen> {
     _startServer();
   }
 
+  String _debugLog = '';
+  String? _startError;
+
+  void _log(String msg) {
+    print('[DemocracyJS] $msg');
+    if (mounted) setState(() => _debugLog += '$msg\n');
+  }
+
   Future<void> _startServer() async {
     final port = ref.read(serverPortProvider);
     ref.read(serverStatusProvider.notifier).update(ServerStatus.starting);
     ref.read(currentPollProvider.notifier).updateStatus(PollStatus.hosting);
 
-    // Save poll to repository
-    final poll = ref.read(currentPollProvider);
-    if (poll != null) {
-      await ref.read(pollRepositoryProvider).createPoll(poll);
-    }
-
     try {
+      _log('Saving poll...');
+      final poll = ref.read(currentPollProvider);
+      if (poll != null) {
+        await ref.read(pollRepositoryProvider).createPoll(poll);
+      }
+      _log('Poll saved. Starting server on port $port...');
+
       final server = ref.read(localServerProvider);
       await server.start(port: port);
+      _log('Server started on port $port');
       ref.read(serverStatusProvider.notifier).update(ServerStatus.running);
 
       // Register mDNS
@@ -57,11 +67,16 @@ class _HostingScreenState extends ConsumerState<HostingScreen> {
           name: AppConstants.mDnsServiceName,
           port: port,
         );
-      } catch (_) {
-        // mDNS registration is best-effort
+        _log('mDNS registered');
+      } catch (e) {
+        _log('mDNS failed: $e');
       }
     } catch (e) {
+      _log('FAILED: $e');
       ref.read(serverStatusProvider.notifier).update(ServerStatus.failed);
+      if (mounted) {
+        setState(() => _startError = e.toString());
+      }
     }
   }
 
@@ -168,6 +183,23 @@ class _HostingScreenState extends ConsumerState<HostingScreen> {
               loading: () => const LoadingView(message: 'Getting network info...'),
               error: (_, __) => const Text('Could not detect network'),
             ),
+            if (serverStatus == ServerStatus.failed)
+              Padding(
+                padding: const EdgeInsets.only(top: AppDimensions.paddingSM),
+                child: Text(
+                  _startError ?? 'Server failed to start. Try restarting the app.',
+                  style: AppTextStyles.bodySmall.copyWith(color: AppColors.error),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            if (serverStatus == ServerStatus.running)
+              Padding(
+                padding: const EdgeInsets.only(top: AppDimensions.paddingSM),
+                child: Text(
+                  'Server running on port $port',
+                  style: AppTextStyles.caption,
+                ),
+              ),
             const SizedBox(height: AppDimensions.paddingLG),
             Container(
               padding: const EdgeInsets.all(AppDimensions.paddingMD),
@@ -212,6 +244,25 @@ class _HostingScreenState extends ConsumerState<HostingScreen> {
               ),
             const SizedBox(height: AppDimensions.paddingSM),
             PrimaryButton(label: 'End Poll', onPressed: _stopServer),
+            if (_debugLog.isNotEmpty) ...[
+              const SizedBox(height: AppDimensions.paddingLG),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(AppDimensions.paddingSM),
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(AppDimensions.radiusSM),
+                ),
+                child: Text(
+                  _debugLog,
+                  style: const TextStyle(
+                    fontFamily: 'monospace',
+                    fontSize: 11,
+                    color: Colors.greenAccent,
+                  ),
+                ),
+              ),
+            ],
           ],
         ),
       ),

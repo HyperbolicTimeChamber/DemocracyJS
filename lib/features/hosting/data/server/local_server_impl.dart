@@ -58,7 +58,6 @@ class ShelfLocalServer implements LocalServer {
           await rootBundle.loadString('assets/browser_client/style.css');
       _appJs = await rootBundle.loadString('assets/browser_client/app.js');
     } catch (_) {
-      // Asset files not yet available (Task 8). Serve placeholder content.
       _indexHtml = '<!DOCTYPE html><html><body><p>Loading...</p></body></html>';
       _styleCss = '';
       _appJs = '';
@@ -125,10 +124,13 @@ class ShelfLocalServer implements LocalServer {
           .addMiddleware(shelf.logRequests())
           .addHandler(router.call);
 
+      print('[DemocracyJS] Binding server to 0.0.0.0:$port...');
       _server =
           await shelf_io.serve(handler, InternetAddress.anyIPv4, port);
+      print('[DemocracyJS] Server bound successfully on port ${_server!.port}');
       _setStatus(ServerStatus.running);
-    } catch (e) {
+    } catch (e, st) {
+      print('[DemocracyJS] Server start failed: $e\n$st');
       _setStatus(ServerStatus.failed);
       rethrow;
     }

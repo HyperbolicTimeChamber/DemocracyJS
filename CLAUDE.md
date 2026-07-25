@@ -39,7 +39,7 @@ Offline-first local-network polling app. Host phone runs shelf HTTP/WebSocket se
 - IP-based vote deduplication
 
 ## Server
-- Default port: 5000
+- Default port: 8080
 - API: GET /api/poll, POST /api/vote, GET /api/results, GET /api/status
 - WebSocket: GET /ws
 - Browser client served from Flutter asset bundle
